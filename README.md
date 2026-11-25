@@ -51,3 +51,15 @@ Acesse: **http://localhost:3000**
 ## Sobre o projeto
 
 Projeto acadêmico desenvolvido para aplicar conhecimentos de desenvolvimento web Full Stack, operações CRUD, autenticação de usuários e integração com banco de dados relacional.
+
+
+## 📸 Capturas de tela
+
+### Página inicial
+![Página inicial do AdotaPet](docs/imagens/inicio.png)
+
+### Animais disponíveis
+![Listagem de animais](docs/imagens/animais.png)
+
+### Detalhes do animal
+![Detalhes de um animal](docs/imagens/detalhes.png)
