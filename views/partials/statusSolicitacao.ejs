@@ -1,0 +1,3 @@
+<span class="ap-status ap-status-inline <%= status === 'aceito' ? 'ap-status-disponivel' : status === 'recusado' ? 'ap-status-recusado' : 'ap-status-em_processo' %>">
+  <%= status === 'aceito' ? 'Aceita' : status === 'recusado' ? 'Recusada' : 'Aguardando resposta' %>
+</span>

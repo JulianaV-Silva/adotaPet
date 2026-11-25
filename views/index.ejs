@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <%- include('partials/head', { titulo: '' }) %>
+</head>
+
+<body class="ap">
+
+  <div class="ap-blob ap-blob-menta" aria-hidden="true"></div>
+
+  <%- include('partials/navbar') %>
+
+  <main>
+
+    <section class="ap-hero">
+      <div class="ap-blob ap-blob-fundo" aria-hidden="true"></div>
+
+      <div class="container position-relative">
+        <div class="row align-items-center">
+
+          <div class="col-lg-6 position-relative" style="z-index: 2;">
+
+            <div class="ap-slot ap-bolha ap-bolha-amarela d-none d-lg-block mb-4 position-relative" data-foto-pet="3">
+              
+            </div>
+
+            <h1 class="ap-hero-titulo">
+              Encontre seu novo <em>melhor amigo</em> hoje!
+            </h1>
+
+            <p class="ap-hero-texto">
+              Conheça cães, gatos e outros bichinhos que estão esperando
+              por um lar cheio de carinho. Adotar muda duas vidas: a dele e a sua.
+            </p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a href="/animais" class="btn btn-ap">Ver animais</a>
+              <a href="#cuidados" class="btn btn-ap-lilas">Dicas de cuidados</a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <div class="ap-hero-palco" aria-hidden="true">
+              <div class="ap-blob ap-blob-verde"></div>
+
+              <div class="ap-hero-foto-principal ap-slot" data-foto-pet="0"></div>
+
+              <div class="ap-slot ap-bolha ap-bolha-laranja" data-foto-pet="1">
+                
+              </div>
+
+              <div class="ap-slot ap-bolha ap-bolha-azul" data-foto-pet="2">
+                
+              </div>
+
+              <div class="ap-hero-selo">
+                <span class="ap-selo-icone">🏡</span>
+                <span>
+                  <strong>Adoção responsável</strong>
+                  gratuita e sem burocracia
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="ap-secao pt-4" id="destaques" data-destaques hidden>
+      <div class="container">
+
+        <div class="d-flex flex-wrap align-items-end gap-3 mb-4">
+          <div>
+            <h2 class="ap-titulo-secao">Esperando por você</h2>
+            <p class="ap-subtitulo mb-0">Alguns dos bichinhos que estão disponíveis para adoção agora.</p>
+          </div>
+          <a href="/animais" class="ap-ver-todos">Ver todos →</a>
+        </div>
+
+        <div class="row g-3 g-lg-4" data-destaques-lista></div>
+
+      </div>
+    </section>
+
+    <section class="ap-secao ap-secao-branca">
+      <div class="container">
+
+        <h2 class="ap-titulo-secao">Como funciona a adoção</h2>
+        <p class="ap-subtitulo mb-5">
+          Em poucos passos você encontra um amigo e conversa direto com o responsável.
+        </p>
+
+        <div class="row g-4">
+
+          <div class="col-md-6 col-lg-3">
+            <div class="ap-passo">
+              <span class="ap-passo-num" style="background: var(--ap-amarelo);">1</span>
+              <div>
+                <h3>Crie sua conta</h3>
+                <p>Cadastro rápido, com nome, e-mail e uma foto sua.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="ap-passo">
+              <span class="ap-passo-num" style="background: var(--ap-verde);">2</span>
+              <div>
+                <h3>Escolha um animal</h3>
+                <p>Use a busca e os filtros para achar o bichinho ideal.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="ap-passo">
+              <span class="ap-passo-num" style="background: var(--ap-lilas);">3</span>
+              <div>
+                <h3>Demonstre interesse</h3>
+                <p>Envie uma mensagem para o responsável pelo animal.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="ap-passo">
+              <span class="ap-passo-num" style="background: var(--ap-azul);">4</span>
+              <div>
+                <h3>Leve para casa</h3>
+                <p>Com a solicitação aceita, combine o encontro e pronto!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="ap-secao" id="cuidados">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+
+          <div class="col-lg-4 d-flex flex-column justify-content-center pe-lg-4">
+            <h2 class="ap-titulo-secao">Cuidando do seu novo melhor amigo</h2>
+            <p class="ap-subtitulo">
+              Trazer um pet para casa é uma alegria, e também uma responsabilidade.
+              Seja seu primeiro animal ou não, estas dicas ajudam nos primeiros dias.
+            </p>
+            <div>
+              <a href="/animais" class="btn btn-ap-lilas mt-2">Conhecer os animais</a>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="ap-artigo">
+              <span class="ap-etiqueta">Guia</span>
+              <h3>Primeiros dias com um cão adotado</h3>
+              <p>Um roteiro simples para ajudar seu novo companheiro a se sentir seguro em casa.</p>
+              <details>
+                <summary>Ler dicas</summary>
+                <ul>
+                  <li>Prepare um cantinho tranquilo com cama e água.</li>
+                  <li>Mantenha horários fixos de comida e passeio.</li>
+                  <li>Apresente a casa e a família aos poucos.</li>
+                  <li>Agende uma consulta com o veterinário na primeira semana.</li>
+                </ul>
+              </details>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="ap-artigo verde">
+              <span class="ap-etiqueta">Gatos</span>
+              <h3>Deixando a casa pronta para um gato</h3>
+              <p>Gatos gostam de rotina e de lugares altos. Veja o que não pode faltar.</p>
+              <details>
+                <summary>Ler dicas</summary>
+                <ul>
+                  <li>Caixa de areia em local calmo, longe da comida.</li>
+                  <li>Arranhador e prateleiras para ele explorar.</li>
+                  <li>Telas de proteção em janelas e sacadas.</li>
+                  <li>Deixe que ele se aproxime no tempo dele.</li>
+                </ul>
+              </details>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="ap-secao pt-0" id="match">
+      <div class="container">
+        <div class="ap-match">
+          <div class="ap-blob" style="width: 340px; height: 320px; right: -80px; top: -90px; background: #1f5a48;" aria-hidden="true"></div>
+          <div class="ap-blob" style="width: 220px; height: 200px; left: -70px; bottom: -80px; background: #1f5a48;" aria-hidden="true"></div>
+
+          <div class="row g-4 align-items-center">
+
+            <div class="col-lg-7">
+              <h2>Encontre seu match perfeito</h2>
+              <p class="mb-4">
+                Responda duas perguntas rápidas e mostramos os animais que
+                combinam com você.
+              </p>
+
+              <form action="/animais" method="GET">
+
+                <fieldset class="ap-match-pergunta">
+                  <legend>Qual bichinho você procura?</legend>
+                  <div class="ap-opcoes">
+                    <label class="ap-opcao"><input type="radio" name="especie" value="" checked><span>Tanto faz</span></label>
+                    <label class="ap-opcao"><input type="radio" name="especie" value="Cachorro"><span>🐶 Cachorro</span></label>
+                    <label class="ap-opcao"><input type="radio" name="especie" value="Gato"><span>🐱 Gato</span></label>
+                    <label class="ap-opcao"><input type="radio" name="especie" value="Outro"><span>🐰 Outro</span></label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="ap-match-pergunta">
+                  <legend>Que fase da vida combina com sua rotina?</legend>
+                  <div class="ap-opcoes">
+                    <label class="ap-opcao"><input type="radio" name="idade" value="" checked><span>Tanto faz</span></label>
+                    <label class="ap-opcao"><input type="radio" name="idade" value="filhote"><span>Filhote, cheio de energia</span></label>
+                    <label class="ap-opcao"><input type="radio" name="idade" value="adulto"><span>Adulto, equilibrado</span></label>
+                    <label class="ap-opcao"><input type="radio" name="idade" value="idoso"><span>Idoso, tranquilo</span></label>
+                  </div>
+                </fieldset>
+
+                <button type="submit" class="btn btn-ap-lilas">Ver meus matches</button>
+              </form>
+            </div>
+
+            <div class="col-lg-5 d-none d-lg-block">
+              <div class="ap-match-fotos" aria-hidden="true">
+                <div class="ap-slot ap-bolha" style="width: 190px; height: 190px; right: 30px; top: 0; background: var(--ap-amarelo);" data-foto-pet="1">
+                  
+                </div>
+                <div class="ap-slot ap-bolha" style="width: 140px; height: 140px; left: 20px; top: 110px; background: var(--ap-laranja);" data-foto-pet="0">
+                  
+                </div>
+                <div class="ap-slot ap-bolha" style="width: 120px; height: 120px; right: 90px; bottom: 0; background: var(--ap-azul);" data-foto-pet="2">
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <%- include('partials/rodape') %>
+  <%- include('partials/scripts') %>
+</body>
+
+</html>

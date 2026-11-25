@@ -1,0 +1,16 @@
+
+<% if (aviso) { %>
+  <div
+    class="alert alert-<%= aviso.tipo %> alert-dismissible fade show"
+    role="alert"
+  >
+    <%= aviso.texto %>
+
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Fechar"
+    ></button>
+  </div>
+<% } %>

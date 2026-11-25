@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <%- include('partials/head', { titulo: animal.nome }) %>
+</head>
+
+<body class="ap">
+
+  <%- include('partials/navbar') %>
+
+    <main class="container py-4 pb-5">
+
+      <a href="/animais" class="ap-voltar">← Voltar aos animais</a>
+
+      <div class="row g-4 g-lg-5 align-items-start">
+
+        <div class="col-lg-6">
+          <div class="ap-detalhe-foto ap-cor-<%= animal.id_animal % 8 %>">
+            <img src="/uploads/<%= animal.arquivo %>" alt="Foto de <%= animal.nome %>">
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+
+          <span class="ap-status ap-status-inline ap-status-<%= animal.status_adocao %> mb-3">
+            <%= animal.status_adocao==='disponivel' ? 'Disponível para adoção' : animal.status_adocao==='em_processo'
+              ? 'Em processo de adoção' : 'Adotado' %>
+          </span>
+
+          <h1 class="ap-hero-titulo mb-2" style="font-size: clamp(2.2rem, 4vw, 3rem);">
+            Conheça <%= animal.nome %>
+          </h1>
+          <%- include('partials/aviso') %>
+            <div class="ap-fatos">
+              <div class="ap-fato">
+                <small>Espécie</small>
+                <strong>
+                  <%= animal.especie %>
+                </strong>
+              </div>
+              <div class="ap-fato">
+                <small>Idade</small>
+                <strong>
+                  <%= animal.idade===0 ? 'Menos de 1 ano' : animal.idade===1 ? '1 ano' : animal.idade + ' anos' %>
+                </strong>
+              </div>
+              <div class="ap-fato">
+                <small>Responsável</small>
+                <strong class="text-break">
+                  <%= animal.responsavel %>
+                </strong>
+              </div>
+            </div>
+
+            <h2 class="h5 mt-4">Sobre <%= animal.nome %>
+            </h2>
+
+            <p class="ap-subtitulo" style="white-space: pre-line; max-width: none;">
+              <%= animal.descricao || 'Nenhuma descrição informada.' %>
+            </p>
+
+            <div class="ap-caixa mt-4">
+              <h2 class="h5">❤️ Gostou de <%= animal.nome %>?</h2>
+
+              <% if (!usuarioLogado) { %>
+
+                <p class="text-muted">
+                  Faça login para demonstrar interesse neste animal.
+                </p>
+
+                <a href="/login" class="btn btn-ap">
+                  Entrar para demonstrar interesse
+                </a>
+
+                <% } else if (usuarioLogado.id===animal.id_usuario) { %>
+
+                  <p class="text-muted mb-0">
+                    Este anúncio foi cadastrado por você.
+                  </p>
+
+                  <% } else if (interesseExistente) { %>
+
+                    <div class="ap-aviso">
+                      Você já demonstrou interesse neste animal.
+                      <p class="mb-0 mt-1">
+                        <strong>Status da solicitação:</strong>
+                        <%= interesseExistente.status==='aceito' ? 'Aceita' : interesseExistente.status==='recusado'
+                          ? 'Recusada' : 'Aguardando resposta' %>
+                      </p>
+                    </div>
+
+                    <a href="/meus-interesses" class="btn btn-ap-contorno">
+                      Acompanhar solicitação
+                    </a>
+
+                    <% } else if (animal.status_adocao !=='disponivel' ) { %>
+
+                      <div class="ap-aviso alerta mb-0">
+                        Este animal não está recebendo novas
+                        solicitações de adoção no momento.
+                      </div>
+
+                      <% } else { %>
+
+                        <p class="text-muted">
+                          Envie uma mensagem ao responsável contando um pouco sobre você.
+                        </p>
+
+                        <form action="/animais/<%= animal.id_animal %>/interesse" method="POST">
+
+                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                          <div class="mb-3">
+                            <label for="mensagem" class="form-label">
+                              Mensagem ao responsável (opcional)
+                            </label>
+
+                            <textarea id="mensagem" name="mensagem" class="form-control" rows="4" maxlength="1000"
+                              placeholder="Olá! Gostaria de saber mais sobre este animal."></textarea>
+                          </div>
+
+                          <button type="submit" class="btn btn-ap">
+                            Tenho interesse em adotar ❤️
+                          </button>
+
+                        </form>
+
+                        <% } %>
+
+            </div>
+
+            <% if (usuarioLogado && usuarioLogado.id===animal.id_usuario && animal.status_adocao==='em_processo' ) { %>
+
+              <div class="ap-caixa verde mt-3">
+
+                <h2 class="h5">Finalizar processo de adoção</h2>
+
+                <p class="text-muted">
+                  O animal já encontrou um novo lar?
+                  Confirme somente quando a adoção
+                  tiver sido realmente concluída.
+                </p>
+
+                <form action="/animais/<%= animal.id_animal %>/concluir-adocao" method="POST"
+                  onsubmit="return confirm('Confirma que este animal foi adotado?');">
+
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                  <button type="submit" class="btn btn-ap">
+                    Concluir adoção
+                  </button>
+
+                </form>
+
+              </div>
+
+              <% } %>
+
+                <% if (usuarioLogado && usuarioLogado.id===animal.id_usuario) { %>
+                  <a href="/animais/<%= animal.id_animal %>/editar" class="btn btn-ap-contorno btn-sm mt-3">
+                    Editar anúncio
+                  </a>
+                  <% } %>
+
+        </div>
+      </div>
+
+    </main>
+
+    <%- include('partials/rodape') %>
+      <%- include('partials/scripts') %>
+</body>
+
+</html>

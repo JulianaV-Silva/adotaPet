@@ -1,0 +1,21 @@
+
+# Dependências instaladas
+node_modules/
+
+# Configurações privadas
+.env
+.env.*
+
+# Permitir o arquivo de exemplo
+!.env.example
+
+# Arquivos temporários
+*.log
+
+# Arquivos enviados pelos usuários
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Scripts locais de teste
+banco/testeConexao.js
+banco/testeSenha.js

@@ -1,0 +1,24 @@
+<footer class="ap-rodape">
+  <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+
+    <div>
+      <a class="ap-logo" href="/">
+        <span class="ap-logo-pata" aria-hidden="true">🐾</span>adota<span class="ap-logo-destaque">Pet</span>
+      </a>
+      <p class="mb-0 mt-2">Conectando animais a lares cheios de carinho.</p>
+    </div>
+
+    <ul class="ap-rodape-links">
+      <li><a href="/">Início</a></li>
+      <li><a href="/animais">Animais</a></li>
+      <% if (usuarioLogado) { %>
+        <li><a href="/animais/novo">Cadastrar animal</a></li>
+        <li><a href="/meus-interesses">Meus interesses</a></li>
+      <% } else { %>
+        <li><a href="/login">Entrar</a></li>
+        <li><a href="/cadastro">Criar conta</a></li>
+      <% } %>
+    </ul>
+
+  </div>
+</footer>

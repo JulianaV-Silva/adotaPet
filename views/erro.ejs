@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <%- include('partials/head', { titulo: 'Aviso' }) %>
+</head>
+
+<body class="ap">
+
+  <%- include('partials/navbar') %>
+
+  <main class="container py-5">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+
+        <div class="ap-painel text-center">
+
+          <div class="display-4 mb-3">🐾</div>
+
+          <h1 class="h3 mb-3">
+            Não foi possível concluir a operação
+          </h1>
+
+          <div class="alert alert-warning" role="alert">
+            <%= mensagem %>
+          </div>
+
+          <a href="/animais" class="btn btn-ap">
+            Voltar aos animais
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <%- include('partials/rodape') %>
+  <%- include('partials/scripts') %>
+
+</body>
+</html>

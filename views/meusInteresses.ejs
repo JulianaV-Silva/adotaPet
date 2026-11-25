@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <%- include('partials/head', { titulo: 'Meus interesses' }) %>
+</head>
+
+<body class="ap">
+
+  <%- include('partials/navbar') %>
+
+  <main>
+
+    <header class="ap-cabecalho">
+      <div class="container">
+        <h1>Meus interesses</h1>
+        <p class="ap-subtitulo mb-0">
+          Acompanhe as solicitações de adoção que você enviou.
+        </p>
+      </div>
+    </header>
+
+    <section class="container pb-5">
+
+      <% if (interesses.length === 0) { %>
+
+        <div class="ap-vazio">
+          <div class="ap-vazio-icone">❤️</div>
+          <p class="mb-3">Você ainda não demonstrou interesse em nenhum animal.</p>
+          <a href="/animais" class="btn btn-ap">Conhecer os animais</a>
+        </div>
+
+      <% } else { %>
+
+        <div class="row g-4">
+
+          <% interesses.forEach((interesse) => { %>
+
+            <div class="col-lg-6">
+
+              <article class="ap-item">
+
+                <a href="/animais/<%= interesse.id_animal %>" class="ap-item-foto ap-cor-<%= interesse.id_animal % 8 %>">
+                  <img src="/uploads/<%= interesse.arquivo %>" alt="Foto de <%= interesse.nome_animal %>">
+                </a>
+
+                <div class="ap-item-corpo">
+
+                  <div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+                    <h2><%= interesse.nome_animal %></h2>
+                    <%- include('partials/statusSolicitacao', { status: interesse.status }) %>
+                  </div>
+
+                  <p class="mb-0">
+                    <strong>Responsável:</strong>
+                    <%= interesse.responsavel %>
+                  </p>
+
+                  <p class="ap-mensagem"><strong>Sua mensagem:</strong>
+<%= interesse.mensagem || 'Nenhuma mensagem enviada.' %></p>
+
+                  <% if (interesse.status === 'aceito') { %>
+
+                    <div class="ap-aviso sucesso">
+                      <strong>Solicitação aceita! 🎉</strong>
+                      <p class="mb-1 mt-1">Entre em contato com o responsável:</p>
+                      <a href="mailto:<%= interesse.email_responsavel %>" class="fw-semibold text-break">
+                        <%= interesse.email_responsavel %>
+                      </a>
+                    </div>
+
+                  <% } else if (interesse.status === 'recusado') { %>
+
+                    <div class="ap-aviso neutro">
+                      Esta solicitação não foi aceita.
+                    </div>
+
+                  <% } else { %>
+
+                    <div class="ap-aviso alerta">
+                      Aguardando resposta do responsável.
+                    </div>
+
+                  <% } %>
+
+                  <div class="d-flex justify-content-between align-items-center gap-2 mt-auto flex-wrap">
+                    <span class="ap-meta">
+                      Enviada em <%= new Date(interesse.data_solicitacao).toLocaleDateString('pt-BR') %>
+                    </span>
+                    <a href="/animais/<%= interesse.id_animal %>" class="btn btn-ap-contorno btn-sm">
+                      Ver animal
+                    </a>
+                  </div>
+
+                </div>
+              </article>
+
+            </div>
+
+          <% }) %>
+
+        </div>
+
+      <% } %>
+
+    </section>
+
+  </main>
+
+  <%- include('partials/rodape') %>
+  <%- include('partials/scripts') %>
+</body>
+
+</html>

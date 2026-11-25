@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg ap-nav" aria-label="Menu principal">
+
+  <div class="container">
+
+    <a class="ap-logo" href="/" aria-label="AdotaPet, página inicial">
+      <span class="ap-logo-pata" aria-hidden="true">🐾</span>adota<span class="ap-logo-destaque">Pet</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menuAdotaPet"
+      aria-controls="menuAdotaPet"
+      aria-expanded="false"
+      aria-label="Abrir menu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuAdotaPet">
+
+      <ul class="navbar-nav mx-auto mb-3 mb-lg-0 gap-lg-1">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/">Início</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/animais">Animais</a>
+        </li>
+
+        <% if (usuarioLogado) { %>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/animais/novo">Cadastrar animal</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/solicitacoes">Solicitações recebidas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/meus-interesses">Meus interesses</a>
+          </li>
+
+        <% } %>
+
+      </ul>
+
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 gap-lg-3">
+
+        <% if (usuarioLogado) { %>
+
+          <div class="ap-usuario">
+            <img
+              src="/uploads/<%= usuarioLogado.foto %>"
+              alt="Foto de perfil"
+              width="40"
+              height="40"
+              class="ap-avatar"
+            >
+            <span><%= usuarioLogado.nome %></span>
+          </div>
+
+          <form action="/logout" method="POST" class="m-0">
+
+            <input
+              type="hidden"
+              name="_csrf"
+              value="<%= csrfToken %>"
+            >
+
+            <button type="submit" class="btn btn-ap-contorno btn-sm">
+              Sair
+            </button>
+
+          </form>
+
+        <% } else { %>
+
+          <a href="/login" class="btn btn-ap-contorno btn-sm">
+            Entrar
+          </a>
+
+          <a href="/cadastro" class="btn btn-ap-lilas btn-sm">
+            Quero adotar
+          </a>
+
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+</nav>

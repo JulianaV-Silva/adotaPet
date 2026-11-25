@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <%- include('partials/head', { titulo: 'Cadastrar animal' }) %>
+</head>
+
+<body class="ap">
+
+  <%- include('partials/navbar') %>
+
+  <main class="container py-4 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-xl-6">
+
+        <a href="/animais" class="ap-voltar">← Voltar aos animais</a>
+
+        <div class="ap-painel">
+
+          <h1 class="h2 mb-1">Cadastrar animal 🐾</h1>
+          <p class="text-muted mb-4">Ajude um novo amigo a encontrar um lar.</p>
+
+          <form action="/animais" method="POST" enctype="multipart/form-data">
+
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <img id="previewAnimal" class="ap-preview-foto ap-oculto" alt="Prévia da foto do animal">
+              <div class="flex-grow-1">
+                <label for="arquivo" class="form-label">Foto do animal</label>
+                <input type="file" id="arquivo" name="arquivo" accept="image/jpeg,image/png,image/webp"
+                  class="form-control" data-preview="previewAnimal" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome do animal</label>
+              <input type="text" id="nome" name="nome" class="form-control" maxlength="100" required>
+            </div>
+
+            <fieldset class="mb-3">
+              <legend class="form-label fs-6">Espécie</legend>
+              <div class="ap-especies">
+                <label class="ap-opcao"><input type="radio" name="especie" value="Cachorro" required><span>🐶 Cachorro</span></label>
+                <label class="ap-opcao"><input type="radio" name="especie" value="Gato"><span>🐱 Gato</span></label>
+                <label class="ap-opcao"><input type="radio" name="especie" value="Outro"><span>🐰 Outro</span></label>
+              </div>
+            </fieldset>
+
+            <div class="mb-3" style="max-width: 200px;">
+              <label for="idade" class="form-label">Idade (anos)</label>
+              <input type="number" id="idade" name="idade" min="0" max="100" class="form-control" required>
+            </div>
+
+            <div class="mb-4">
+              <label for="descricao" class="form-label">Descrição</label>
+              <textarea id="descricao" name="descricao" class="form-control" rows="4"
+                placeholder="Conte como ele é: personalidade, cuidados, se é castrado, vacinado..."></textarea>
+            </div>
+
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+            <button type="submit" class="btn btn-ap w-100">
+              Cadastrar animal
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/rodape') %>
+  <%- include('partials/scripts') %>
+</body>
+
+</html>
